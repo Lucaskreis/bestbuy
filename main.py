@@ -60,14 +60,14 @@ def processing_order(best_buy):
                 list_of_itens.append(int(choosen_product))
                 list_of_quant.append(int(choosen_quantity))
                 for i in range(len(bb_products)):
-                    #print(i)
                     for j in range(len(list_of_itens)):
-                        #print(j)
+
                         if i + 1 == list_of_itens[j]:
-                            print(bb_products[i].name)
-                            shopping_cart.append((bb_products[i].name, bb_products[i].price, list_of_quant[j]))
+                            item = (bb_products[i].name, bb_products[i].price, list_of_quant[j])
+                            print(item)
+                            if item not in shopping_cart:
+                                shopping_cart.append(item)
                             print(shopping_cart)
-                            #remover entradas duplicadas
             else:
                 print("Error processing the order")
                 start(best_buy)
