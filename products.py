@@ -35,9 +35,27 @@ class Product:
 
 
 class NonStockedProduct(Product):
-    def __init__(self, name, price, quantity=0):
-        super().__init__(self, name, price)
-        self.quantity = quantity
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+        self.active = True
+        self.quantity = None
+
+
+    def is_active(self):
+        super().is_active()
+
+
+    def activate(self):
+        super().active()
+
+
+    def deactivate(self):
+        super().deactivate()
+
+
+    def show(self):
+        print(f"{self.name}, Price:{self.price}, {self.active}")
 
 
 class LimitedProduct(Product):
@@ -45,11 +63,22 @@ class LimitedProduct(Product):
         super().__init__(name, price, quantity)
         self.maximum = maximum
 
+
+    def is_active(self):
+        super().is_active()
+
+    def activate(self):
+        super().active()
+
+    def deactivate(self):
+        super().deactivate()
+
+
+    def get_quantity(self):
+        super().get_quantity()
+
+
     def set_quantity(self, quantity, maximum):
         super().set_quantity(quantity)
-        if quantity > maximum:
+        if self.quantity > self.maximum:
             print("Quantity exceeds maximum")
-            #continuar pelo super amanha
-
-
-

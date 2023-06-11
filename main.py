@@ -10,7 +10,6 @@ product_list = [products.Product("MacBook Air M2", price=1450, quantity=100),
                 products.Product("Google Pixel 7", price=500, quantity=250),
                 products.NonStockedProduct("Windows License", price=125),
                 products.LimitedProduct("Shipping", price=10, quantity=250, maximum=1)
-                products.LimitedProduct("Shipping", price=10, quantity=250, maximum=1)
                 ]
 best_buy = store.Store(product_list)
 
@@ -57,13 +56,18 @@ def processing_order(best_buy):
         choosen_quantity = input("What amount do you want?")
         print("Product added to list!")
         if choosen_product != "" or choosen_quantity != "":
-            if int(choosen_product) < len(bb_products) - 1:
+            if int(choosen_product) <= len(bb_products):
                 list_of_itens.append(int(choosen_product))
                 list_of_quant.append(int(choosen_quantity))
                 for i in range(len(bb_products)):
+                    #print(i)
                     for j in range(len(list_of_itens)):
+                        #print(j)
                         if i + 1 == list_of_itens[j]:
+                            print(bb_products[i].name)
                             shopping_cart.append((bb_products[i].name, bb_products[i].price, list_of_quant[j]))
+                            print(shopping_cart)
+                            #remover entradas duplicadas
             else:
                 print("Error processing the order")
                 start(best_buy)

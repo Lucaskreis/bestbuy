@@ -18,7 +18,8 @@ class Store():
     def get_total_quantity(self):
         total_amount = 0
         for i in self.list_of_products:
-            total_amount = total_amount + i.quantity
+            if i.quantity is not None:
+                total_amount = total_amount + i.quantity
         print(f"Total of {total_amount} itens in store")
         return total_amount
 
